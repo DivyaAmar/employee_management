@@ -1,0 +1,17 @@
+<!------------------------ Employee detail ---------------------->
+<div class="container">
+  <div class="row custom-row">
+    <div class="col-sm-3 border bg-light img-container">
+      <fa-icon [icon]="faImage" class="custom-faImage"></fa-icon>
+    </div>
+    <div class="col-sm-9 emp-detail">
+      <div>Name : {{employee.employee_name}}</div>
+      <div>ID : {{employee.id}}</div>
+      <div>Age : {{employee.employee_age}}</div>
+      <div>Salary : {{employee.employee_salary}}</div>
+      </div>
+  </div>
+
+  <!------------------------ Go back to Employee list page ---------------------->
+  <fa-icon (click)="navigateToEmpList()" title="Go back" class="arrowleft" [icon]="faArrowLeft"></fa-icon>
+</div>

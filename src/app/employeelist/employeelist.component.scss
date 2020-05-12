@@ -1,0 +1,52 @@
+
+
+/****************** warning message color ****************/
+.mandatoryField{
+  color: red
+}
+
+/****************** employee list container ****************/
+.container{
+  .pageViewContainer{
+    margin-left: 20px;
+    .pageViewNumb{
+      width: 5%;
+      padding-left: 10px;
+    }
+  }
+  .custom-faUserPlus{
+    cursor: pointer;
+    display: flex;
+    float: right;
+    font-size: 35px;
+    color: cornflowerblue;
+  }
+  .action-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .custom-faEdit{
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+    color: cornflowerblue
+  }
+  .custom-faUserMinus{
+    cursor: pointer;
+    float: left;
+    font-size: 20px; 
+    margin-left: 20px;
+    color: cornflowerblue
+  }
+  .name:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+/****************** pop save button disabling ****************/
+.disableBtn:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }

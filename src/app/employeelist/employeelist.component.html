@@ -1,0 +1,93 @@
+
+  <!------------------------ Spinner ---------------------->
+  <ngx-spinner></ngx-spinner>
+<div *ngIf="errorMsg != null" style="text-align: center;">{{errorMsg}}</div>
+<!------------------------ List container ---------------------->
+<div class="container" *ngIf="errorMsg == null">
+  <!------------------------ Search and Add icon ---------------------->
+  <div>
+    Search: <input id="input" type="text" size="20" placeholder="Search here..." [(ngModel)]="listFilterBy">
+    <span class="pageViewContainer"> Show <input type="number" class="pageViewNumb" [(ngModel)]="pageView"> </span> entries
+    <span>
+      <fa-icon [icon]="faUserPlus" title="Add Employee" class="custom-faUserPlus" (click)="addEmployee(empFormModal)"></fa-icon>
+    </span>
+  </div>
+  <br/>
+
+  <!------------------------ List Table ---------------------->
+  <table class="table table-bordered table-responsive-md table-striped text-center container-fluid" >
+    <thead class="table-primary">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center"> Name</th>
+        <th class="text-center">Age</th>
+        <th class="text-center">Salary</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let employee of employeeList|filter:listFilterBy| paginate: { itemsPerPage: pageView, currentPage: p }; let id = index">
+        <td>{{employee.id}}</td>
+        <td class="name" (click)="navigateToDetail(employee)">{{employee.employee_name}}</td>
+        <td>{{employee.employee_age}}</td>
+        <td>{{employee.employee_salary}}</td>
+        <td>
+          <div class="action-container">
+            <fa-icon [icon]="faEdit" title="Edit Employee" class="custom-faEdit" (click)="updateEmployee(empFormModal,employee)"></fa-icon>
+            <fa-icon [icon]="faUserMinus" title="Remove Employee" class="custom-faUserMinus" (click)="removeEmployee(employee)"></fa-icon>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!------------------------ pagination  ---------------------->
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+  <!------------------------ pop-modal  ---------------------->
+  <ng-template #empFormModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Employee Form</h4>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+        <span>×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit();modal.dismiss()" id="newPostModal">
+        <div class="form-group row">
+          <label for="name" class="col-sm-4 col-form-label">Employee Name <span class="mandatoryField">*</span></label>
+          <div class="col-sm-8">
+            <input type="text" ngbAutofocus class="form-control" formControlName="name" id="name">
+            <span *ngIf="(!editProfileForm.get('name')?.valid) && editProfileForm.get('name')?.touched"
+            class="mandatoryField">Please enter the name!</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="age" class="col-sm-4 col-form-label">Employee Age <span class="mandatoryField">*</span></label>
+          <div class="col-sm-8">
+            <input type="number" class="form-control" formControlName="age" id="age">
+            <span *ngIf="(!editProfileForm.get('age')?.valid) && editProfileForm.get('age')?.touched"
+            class="mandatoryField">Please enter the age!</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="salary" class="col-sm-4 col-form-label">Employee Salary <span class="mandatoryField">*</span></label>
+          <div class="col-sm-8">
+            <input type="number" class="form-control" formControlName="salary" id="salary">
+            <span *ngIf="(!editProfileForm.get('salary')?.valid) && editProfileForm.get('salary')?.touched"
+            class="mandatoryField">Please enter the salary!</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary disableBtn" [disabled]="!editProfileForm.valid"
+            *ngIf="employeeActionType == 'add'">Save</button>
+          <button type="submit" class="btn btn-primary disableBtn"
+            [disabled]=" !editProfileForm.dirty || !editProfileForm.valid"
+            *ngIf="employeeActionType == 'update'">Save</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</div>

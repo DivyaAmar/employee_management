@@ -1,0 +1,30 @@
+    /****************** Employee detail  ****************/
+    .custom-row{
+        margin-top:5%;
+        margin-left: 25%;
+        .img-container{
+            height:160px;
+            margin-bottom:20px
+        }
+        .custom-faImage{
+            color: gray; 
+            display: flex;
+            height: inherit;
+            font-size: 25px;
+            padding-top: 44%;
+            padding-left: 45%
+        }
+        .emp-detail{
+            margin-top:40px;
+        }
+    }
+
+    /****************** Back button ****************/
+    .arrowleft{
+        display: flex;
+        height: inherit;
+        margin-left: 25%;
+        font-size: 32px;
+        cursor: pointer;
+        color: darkgrey;
+    }
