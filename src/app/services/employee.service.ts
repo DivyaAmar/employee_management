@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IEmployee } from '../entity/Employee';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -16,12 +15,12 @@ export class EmployeeService {
 
   /*********************  Returns all the employees  ********************/
   getAllEmployees():Observable<any>{
-    return  this.http.get<IEmployee[]>(this._url+'/employees');
+    return  this.http.get(this._url+'/employees');
   }
 
 /********************* Adding Employee   ********************/
   addEmployee(requestBody): Observable<any> {
-    return this.http.post<IEmployee[]>(this._url+"/create",requestBody).pipe(catchError(this.erroHandler));
+    return this.http.post(this._url+"/create",requestBody).pipe(catchError(this.erroHandler));
   }
 
   /********************* Update employee details ********************/

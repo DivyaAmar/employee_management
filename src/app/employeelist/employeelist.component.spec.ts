@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { EmployeeService } from '../services/employeeservice.service';
+import { EmployeeService } from '../services/employee.service';
 import { EmployeeInfoService } from '../services/employeeInfo.service';
 import { EmployeeListComponent } from './employeelist.component';
 

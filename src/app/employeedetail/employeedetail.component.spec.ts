@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { EmployeeService } from '../services/employeeservice.service';
+import { EmployeeService } from '../services/employee.service';
 import { EmployeeInfoService } from '../services/employeeInfo.service';
 import { EmployeeDetailComponent } from './employeedetail.component';
 

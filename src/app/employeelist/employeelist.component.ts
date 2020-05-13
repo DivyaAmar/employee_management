@@ -6,9 +6,8 @@ import { faUserPlus, faEdit, faUserTimes } from '@fortawesome/free-solid-svg-ico
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { EmployeeService } from '../services/employeeservice.service';
+import { EmployeeService } from '../services/employee.service';
 import { EmployeeInfoService } from '../services/employeeInfo.service';
-import { IEmployee } from '../entity/Employee';
 
 
 
@@ -174,4 +173,17 @@ export class EmployeeListComponent implements OnInit {
       this.toastr.error("Employee Deletion Failed")
     });
   }
+
+  /******************** Comparing the employee list object and the entered input values to enable save button for Update*********************/
+  isEnableSaveBtn(){
+    let empPostObj = this.employeeList.find(emp => emp.id == this.id);
+    let index = this.employeeList.indexOf(empPostObj);
+    if(this.employeeList[index]['id'] == this.id && this.employeeList[index]['employee_name'] == this.editProfileForm.value.name &&
+    this.employeeList[index]['employee_age'] == this.editProfileForm.value.age && this.employeeList[index]['employee_salary'] == this.editProfileForm.value.salary){
+      return true
+    } else {
+      return false
+    }
+  }
+
 }

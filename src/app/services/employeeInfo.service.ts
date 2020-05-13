@@ -1,12 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { IEmployee } from '../entity/Employee';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeInfoService {
 
-  empObj: IEmployee;
+  empObj;
   constructor() { }
   
   /******************Employee object shared across components

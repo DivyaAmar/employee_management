@@ -84,7 +84,7 @@
           <button type="submit" class="btn btn-primary disableBtn" [disabled]="!editProfileForm.valid"
             *ngIf="employeeActionType == 'add'">Save</button>
           <button type="submit" class="btn btn-primary disableBtn"
-            [disabled]=" !editProfileForm.dirty || !editProfileForm.valid"
+            [disabled]=" !editProfileForm.dirty || !editProfileForm.valid || isEnableSaveBtn()"
             *ngIf="employeeActionType == 'update'">Save</button>
         </div>
       </form>
